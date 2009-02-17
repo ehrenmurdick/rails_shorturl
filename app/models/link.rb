@@ -9,4 +9,8 @@ class Link < ActiveRecord::Base
   def short
     self[:id].to_s(36)
   end
+
+  def to_xml
+    attributes.merge(:short => short).to_xml
+  end
 end

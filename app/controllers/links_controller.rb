@@ -19,7 +19,7 @@ class LinksController < ApplicationController
     
   # POST /links.xml
   def create
-    @link = Link.new(params[:link])
+    @link = Link.find_or_create_by_long(params[:url])
 
     respond_to do |format|
       if @link.save
