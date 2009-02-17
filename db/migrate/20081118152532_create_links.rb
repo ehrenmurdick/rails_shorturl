@@ -2,7 +2,7 @@ class CreateLinks < ActiveRecord::Migration
   def self.up
     create_table :links do |t|
       t.string :long
-      t.string :short
+      t.integer :short
 
       t.timestamps
     end
