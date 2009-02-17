@@ -17,6 +17,7 @@ class LinksController < ApplicationController
       render :text => '404 Not found.', :status => 404 
     else
       redirect_to @link.long
+      @link.update_attribute(:updated_at, Time.now)
     end
   end
     
