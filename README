@@ -7,3 +7,10 @@ Run your own short URL service.
 * Edit config/database.yml
 * Edit config/initializers/configuration.rb
 * Launch!
+
+
+===
+Modified by Ehren Murdick to make the service private:
+* Removing html views, the only way to use it will be by rest requests
+* Adding a secret key
+
