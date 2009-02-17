@@ -8,6 +8,7 @@ class LinksController < ApplicationController
     end
   end
 
+  # GET /:id
   def redirect
     @link = Link.find_by_short(params[:id])
     if params[:id].blank? or @link.blank?
