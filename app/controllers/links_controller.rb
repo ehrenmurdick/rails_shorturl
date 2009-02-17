@@ -9,12 +9,11 @@ class LinksController < ApplicationController
   end
 
   def redirect
-    if params[:id].blank?
-      redirect_to new_link_path
-    elsif @link = Link.find_by_short(params[:id])
-      redirect_to @link.long
-    else
+    @link = Link.find_by_short(params[:id])
+    if params[:id].blank? or @link.blank?
       render :text => '404 Not found.', :status => 404 
+    else
+      redirect_to @link.long
     end
   end
     
@@ -24,7 +23,6 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        flash[:notice] = 'Link was successfully created.'
         format.xml  { render :xml => @link, :status => :created, :location => @link }
       else
         format.xml  { render :xml => @link.errors, :status => :unprocessable_entity }
