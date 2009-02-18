@@ -4,7 +4,7 @@ class Link < ActiveRecord::Base
   before_create :create_short
 
   def self.find_by_key(s)
-    find_by_short(s.to_i(36))
+    find_by_short(s.from_64)
   end
 
   def self.find_a_hole
@@ -18,7 +18,7 @@ SELECT links1.short + 1 AS start
   end
 
   def short
-    self[:short].to_s(36)
+    self[:short].to_64
   end
 
   def to_xml
